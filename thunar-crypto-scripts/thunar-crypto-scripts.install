@@ -1,0 +1,54 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>changes-prevent</icon>
+	<name>Encrypt (Password Protect)</name>
+	<command>/usr/bin/thunar-crypto-lock %n</command>
+	<description>Password protect selected file or folder</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>changes-allow</icon>
+	<name>Decrypt</name>
+	<command>/usr/bin/thunar-crypto-unlock %n</command>
+	<description>Decrypt the selected file</description>
+	<patterns>*.tar.gpg</patterns>
+</action>
+<action>
+	<icon>gtk-info</icon>
+	<name>Verify Checksom</name>
+	<command>/usr/bin/thunar-crypto-vchecksum %n</command>
+	<description>Verify the selected checksum</description>
+	<patterns>*.md5;*.sha1;*.sha256;*.sha384;*.sha512;*.sha224;*.ripemd160</patterns>
+	<other-files/>
+	<text-files/>
+</action>
+<action>
+	<icon>gtk-info</icon>
+	<name>Generate Cryptographic Hash</name>
+	<command>/usr/bin/thunar-crypto-hash %N</command>
+	<description>Generate a hash using many popular algorithms</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+

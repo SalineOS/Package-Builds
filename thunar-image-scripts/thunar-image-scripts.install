@@ -1,0 +1,75 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>object-rotate-right</icon>
+	<name>Rotate Image(s)</name>
+	<command>/usr/bin/rotate-image-ca %N</command>
+	<description>Rotate selected image(s) by 90 180 or 270 degrees</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+
+<action>
+	<icon>zoom-fit-best-symbolic</icon>
+	<name>Scale Image(s)</name>
+	<command>/usr/bin/scale-image-ca %N</command>
+	<description>Scale selected image(s) to a selected resolution</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+
+<action>
+	<icon>zoom-fit-best-symbolic</icon>
+	<name>Resize Image(s) by %</name>
+	<command>/usr/bin/resize-image-ca %N</command>
+	<description>Resize selected image(s) by a percentage of original size</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+
+<action>
+	<icon>image-x-generic</icon>
+	<name>Convert Image(s) Format</name>
+	<command>/usr/bin/convert-image-ca %N</command>
+	<description>Convert selected image(s) to one of many file formats</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action> 
+
+<action>
+	<icon>/usr/share/pixmaps/thunar-image-scripts-bw.png</icon>
+	<name>Render Image(s) in Black and White</name>
+	<command>/usr/bin/blackwhite-image-ca %N</command>
+	<description>Render Image(s) in black and white</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+
+<action>
+	<icon>image-crop</icon>
+	<name>Resize Image(s)</name>
+	<command>/usr/bin/resize-image-ca %N</command>
+	<description>Resize selected image(s) by a percentage of original size</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action>
+
+<action>
+	<icon>image-x-generic</icon>
+	<name>Crop Image(s) Edges</name>
+	<command>/usr/bin/crop-image-ca %N</command>
+	<description>Crop a percentage off all edges of selected image(s)</description>
+	<patterns>*</patterns>
+	<image-files/>
+</action> 
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+

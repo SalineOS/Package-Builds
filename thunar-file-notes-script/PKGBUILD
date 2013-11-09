@@ -1,0 +1,34 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=thunar-file-notes-script
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Allow notes associated with file names"
+arch=(any)
+url="https://github.com/SalineOS/thunar-file-notes-scripts"
+license=('GPL2')
+groups=()
+depends=( 'yad' 'thunar' 'coreutils' 'bash')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=thunar-file-notes-script.install
+changelog=
+source=('git+https://github.com/SalineOS/thunar-file-notes-script')
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+        cp -f ./thunar-file-notes "$pkgdir/usr/bin"
+}

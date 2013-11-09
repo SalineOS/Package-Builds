@@ -1,0 +1,40 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=thunar-playlist-scripts
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Thunar scripts for creating and managing playlists."
+arch=(any)
+url="https://github.com/SalineOS/thunar-playlist-scripts"
+license=('GPL2')
+groups=()
+depends=('python' 'yad' 'libnotify' 'thunar' 'coreutils' 'bash')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=thunar-playlist-scripts.install
+changelog=
+source=('git+https://github.com/SalineOS/thunar-playlist-scripts')
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/etc/thunar-playlist-scripts/Translations"
+        cp -f ./en_US "$pkgdir/etc/thunar-playlist-scripts/Translations"
+	cp -f ./thunar-remove-from-playlist "$pkgdir/usr/bin"
+        cp -f ./thunar-add-to-playlist-relative "$pkgdir/usr/bin"
+        cp -f ./thunar-create-playlist-full "$pkgdir/usr/bin"
+        cp -f ./thunar-create-playlist-relative "$pkgdir/usr/bin"
+        cp -f ./thunar-add-to-playlist-full "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+}

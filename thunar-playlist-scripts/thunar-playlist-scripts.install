@@ -1,0 +1,58 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>playlist</icon>
+	<name>Create Playlist (Full Path)</name>
+	<command>/usr/bin/thunar-create-playlist-full %F</command>
+	<description>Create a playlist using the full path</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>playlist</icon>
+	<name>Create Playlist (Relative Path)</name>
+	<command>/usr/bin/thunar-create-playlist-relative %F</command>
+	<description>Create a playlist using relative paths</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>add</icon>
+	<name>Add to Playlist (Full Path)</name>
+	<command>/usr/bin/thunar-add-to-playlist-full %F</command>
+	<description>Add to a playlist using the full path</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>add</icon>
+	<name>Add to Playlist (Relative Path)</name>
+	<command>/usr/bin/thunar-add-to-playlist-relative %F</command>
+	<description>Create a playlist using the relative paths</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<video-files/>
+</action>
+<action>
+	<icon>remove</icon>
+	<name>Remove From Playlist</name>
+	<command>/usr/bin/thunar-remove-from-playlist %F</command>
+	<description>Remove selected files from a playlist</description>
+	<patterns>*</patterns>
+	<audio-files/>
+	<video-files/>
+</action>
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+

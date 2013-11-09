@@ -1,0 +1,26 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>accessories-text-editor</icon>
+	<name>File Notes</name>
+	<command>/usr/bin/thunar-file-notes-script %n</command>
+	<description>Notes associated with a file name</description>
+	<patterns>*</patterns>
+	<directories/>
+	<audio-files/>
+	<image-files/>
+	<other-files/>
+	<text-files/>
+	<video-files/>
+</action>
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+
