@@ -1,0 +1,21 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>drive-harddisk-usb</icon>
+	<name>&quot;Burn&quot; Image to USB Drive</name>
+	<command>/usr/bin/thunar-image-to-usb-script %f</command>
+	<description>Copy contents to a USB drive</description>
+	<patterns>*.iso</patterns>
+	<other-files/>
+</action>
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+

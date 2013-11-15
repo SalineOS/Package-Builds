@@ -31,13 +31,10 @@ package() {
         cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
         mkdir -p "$pkgdir/usr/bin"
         mkdir -p "$pkgdir/etc/thunar-image-scripts/Translations"
-        mkdir -p "$pkgdir/usr/share/pixmaps"
-        cp -f ./thunar-image-scripts-bw.png "$pkgdir/usr/bin"
 	cp -f ./scale-image-ca "$pkgdir/usr/bin"
         cp -f ./resize-image-ca "$pkgdir/usr/bin"
         cp -f ./rotate-image-ca "$pkgdir/usr/bin"
         cp -f ./convert-image-ca "$pkgdir/usr/bin"
-        cp -f ./blackwhite-image-ca "$pkgdir/usr/bin"
         cp -f ./crop-image-ca "$pkgdir/usr/bin"
         cp -f ./en_US "$pkgdir/etc/thunar-image-scripts/Translations"
 }

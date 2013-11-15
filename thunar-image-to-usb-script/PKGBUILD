@@ -1,0 +1,36 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=thunar-image-to-usb-script
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Allows writing contents of an iso or image file to a USB key from the Thunar file manager"
+arch=(any)
+url="https://github.com/SalineOS/thunar-image-to-usb-script"
+license=('GPL2')
+groups=()
+depends=('gksu' 'udisks' 'yad' 'libnotify' 'thunar' 'coreutils' 'bash')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=thunar-image-to-usb-script.install
+changelog=
+source=('git+https://github.com/SalineOS/thunar-image-to-usb-script')
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/etc/$pkgname/Translations"
+	cp -f "./$pkgname" "$pkgdir/usr/bin"
+        cp -f ./en_US "$pkgdir/etc/$pkgname/Translations"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+}

@@ -1,0 +1,68 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=search-all-the-things
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Graphical search menu with many options"
+arch=(any)
+url="https://github.com/SalineOS/$pkgname"
+license=('GPL2')
+groups=()
+depends=( 'yad' 'coreutils' 'bash' )
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=$pkgname.install
+changelog=
+source=("git+https://github.com/SalineOS/$pkgname")
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/etc/$pkgname/Translations"
+        mkdir -p "$pkgdir/usr/share/$pkgname"
+        mkdir -p "$pkgdir/usr/share/applications"
+        cp -rf ./Icons "$pkgdir/usr/share/$pkgname"
+        cp -rf ./DesktopFiles "$pkgdir/usr/share/$pkgname"
+        cp -f ./en_US "$pkgdir/etc/$pkgname/Translations"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+        cp -f "./search-all-the-things.desktop" "$pkgdir/usr/share/applications"
+        cp -f "./search-all-the-things" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Amazon" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Applications" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Business" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Dictionary" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-DuckDuckGo" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-FileFolders" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Google" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-GoogleImages" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-GoogleMaps" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-GoogleNews" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-GooglePlus" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-IMDb" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Lyrics" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-MovieFanatic" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Pinterest" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Reddit" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-ReverseAddress" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-ReversePhone" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-RSS" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Thesaurus" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Twitter" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-two" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-UrbanDictionary" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Weather" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-WhitePages" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Wikipedia" "$pkgdir/usr/bin"
+        cp -f "./search-all-the-things-Youtube" "$pkgdir/usr/bin"
+}

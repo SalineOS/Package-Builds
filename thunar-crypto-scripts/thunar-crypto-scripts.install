@@ -23,6 +23,7 @@ echo '<action>
 	<command>/usr/bin/thunar-crypto-unlock %n</command>
 	<description>Decrypt the selected file</description>
 	<patterns>*.tar.gpg</patterns>
+	<other-files/>
 </action>
 <action>
 	<icon>gtk-info</icon>

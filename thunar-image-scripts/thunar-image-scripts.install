@@ -41,24 +41,6 @@ echo '<action>
 </action> 
 
 <action>
-	<icon>/usr/share/pixmaps/thunar-image-scripts-bw.png</icon>
-	<name>Render Image(s) in Black and White</name>
-	<command>/usr/bin/blackwhite-image-ca %N</command>
-	<description>Render Image(s) in black and white</description>
-	<patterns>*</patterns>
-	<image-files/>
-</action>
-
-<action>
-	<icon>image-crop</icon>
-	<name>Resize Image(s)</name>
-	<command>/usr/bin/resize-image-ca %N</command>
-	<description>Resize selected image(s) by a percentage of original size</description>
-	<patterns>*</patterns>
-	<image-files/>
-</action>
-
-<action>
 	<icon>image-x-generic</icon>
 	<name>Crop Image(s) Edges</name>
 	<command>/usr/bin/crop-image-ca %N</command>

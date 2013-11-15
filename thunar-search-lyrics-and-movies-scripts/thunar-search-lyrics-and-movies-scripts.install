@@ -1,0 +1,29 @@
+#!/bin/bash
+post_install() {
+
+for i in $(ls /home); do
+if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
+sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
+echo '<action>
+	<icon>video-x-generic</icon>
+	<name>Search Movie Fanatic</name>
+	<command>/usr/bin/thunar-search-movies-script %n</command>
+	<description>Search Movie Fanatic</description>
+	<patterns>*</patterns>
+	<video-files/>
+</action>
+<action>
+	<icon>audio-x-generic</icon>
+	<name>Search Lyrics</name>
+	<command>/usr/bin/thunar-search-lyrics-script %n</command>
+	<description>Search for lyrics</description>
+	<patterns>*</patterns>
+	<text-files/>
+</action>
+</actions>'>>"/home/$i/.config/Thunar/uca.xml"
+fi
+done
+
+}
+
+

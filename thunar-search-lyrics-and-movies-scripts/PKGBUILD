@@ -1,0 +1,35 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=thunar-search-lyrics-and-movies-scripts
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Allows searching Movie Fanatic and Metro Lyrics within the Thunar file manager."
+arch=(any)
+url="https://github.com/SalineOS/$pkgname"
+license=('GPL2')
+groups=()
+depends=( 'yad' 'thunar' 'coreutils' 'search-all-the-things' 'exo')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install="$pkgname".install
+changelog=
+source=("git+https://github.com/SalineOS/$pkgname")
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+	cp -f "./thunar-search-lyrics-script" "$pkgdir/usr/bin"
+	cp -f "./thunar-search-movies-script" "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+}

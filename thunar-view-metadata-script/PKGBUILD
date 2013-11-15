@@ -1,0 +1,34 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=thunar-view-metadata-script
+pkgver=(4.11)
+pkgrel=1
+epoch=
+pkgdesc="Allows viewing metadata of file(s) within the Thunar file manager."
+arch=(any)
+url="https://github.com/SalineOS/thunar-view-metadata-script"
+license=('GPL2')
+groups=()
+depends=( 'yad' 'libnotify' 'thunar' 'coreutils' 'bash' 'libextractor' 'exiv2' 'flac' 'poppler' 'libgsf' 'libmpeg2' 'libvorbis')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=thunar-view-metadata-script.install
+changelog=
+source=('git+https://github.com/SalineOS/thunar-view-metadata-script')
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+	cp -f "./$pkgname" "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+}
