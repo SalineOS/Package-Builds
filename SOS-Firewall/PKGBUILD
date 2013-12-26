@@ -1,0 +1,42 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=SOS-Firewall
+pkgver=(3.0)
+pkgrel=1
+epoch=
+pkgdesc="Simple and user friendly firewall with few dependencies."
+arch=(any)
+url="https://github.com/SalineOS/SOS-Firewall"
+license=('GPL2')
+groups=()
+depends=('gksu' 'yad' 'coreutils' 'bash' 'iptables')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=$pkgname.install
+changelog=
+source=('git+https://github.com/SalineOS/SOS-Firewall')
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/$pkgname"
+        mkdir -p "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/etc/$pkgname/Translations"
+	cp -f ./Start-SOS-Firewall "$pkgdir/usr/bin"
+        cp -f ./SOS-Firewall-Config "$pkgdir/usr/bin"
+        cp -f ./en_US "$pkgdir/etc/$pkgname/Translations"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        mkdir -p "$pkgdir/usr/share/pixmaps"
+        cp -f ./SOS-Firewall.png "$pkgdir/usr/share/pixmaps"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+        mkdir -p "$pkgdir/etc/systemd/system"
+        cp -f ./SOS-Firewall.service "$pkgdir/etc/systemd/system"
+
+}

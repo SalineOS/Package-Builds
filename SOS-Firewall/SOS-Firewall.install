@@ -1,0 +1,12 @@
+#!/bin/bash
+post_install() {
+
+echo "Starting SOS-Firewall with default rules"
+/usr/bin/Start-SOS-Firewall
+
+echo "Having systemd start SOS-Firewall at boot"
+systemctl enable SOS-Firewall.service
+
+}
+
+
