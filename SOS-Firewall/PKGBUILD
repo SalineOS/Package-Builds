@@ -33,6 +33,8 @@ package() {
         cp -f ./en_US "$pkgdir/etc/$pkgname/Translations"
         mkdir -p "$pkgdir/usr/share/doc/$pkgname"
         mkdir -p "$pkgdir/usr/share/pixmaps"
+        mkdir -p "$pkgdir/usr/share/applications"
+        cp -f ./SOS-Firewall-Config.desktop "$pkgdir/usr/share/applications"
         cp -f ./SOS-Firewall.png "$pkgdir/usr/share/pixmaps"
         cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
         cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
