@@ -1,0 +1,38 @@
+#!/bin/bash
+# Maintainer: Anthony Nordquist <salinelinux@gmail.com>
+pkgname=system-sai
+pkgver=(1.0)
+pkgrel=1
+epoch=
+pkgdesc="Generates a report of general system status and information."
+arch=(any)
+url="https://github.com/SalineOS/System-SAI"
+license=('GPL2')
+groups=()
+depends=( 'yad' 'coreutils' 'bash' 'procps-ng' 'util-linux')
+makedepends=('git')
+checkdepends=()
+optdepends=()
+provides=()
+conflicts=()
+replaces=()
+backup=()
+options=()
+install=$pkgname.install
+changelog=
+source=("git+https://github.com/SalineOS/System-SAI")
+noextract=()
+md5sums=(SKIP)
+
+package() {
+	cd "$srcdir/System-SAI"
+        mkdir -p "$pkgdir/usr/bin"
+        mkdir -p "$pkgdir/etc/System-SAI/Translations"
+        mkdir -p "$pkgdir/usr/share/applications"
+        cp -f ./en_US "$pkgdir/etc/System-SAI/Translations"
+        mkdir -p "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./AUTHORS "$pkgdir/usr/share/doc/$pkgname"
+        cp -f ./COPYING "$pkgdir/usr/share/doc/$pkgname"
+        cp -f "./system-sai.desktop" "$pkgdir/usr/share/applications"
+        cp -f "./System-SAI" "$pkgdir/usr/bin"
+}
