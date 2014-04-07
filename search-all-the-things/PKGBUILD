@@ -2,7 +2,7 @@
 # Maintainer: Anthony Nordquist <salinelinux@gmail.com>
 pkgname=search-all-the-things
 pkgver=(4.11)
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Graphical search menu with many options"
 arch=(any)
