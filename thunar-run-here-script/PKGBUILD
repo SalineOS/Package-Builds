@@ -2,7 +2,7 @@
 # Maintainer: Anthony Nordquist <salinelinux@gmail.com>
 pkgname=thunar-run-here-script
 pkgver=(4.11)
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Run dialog for Thunar that includes per directory histories. Supports running commands in terminal and as the super user."
 arch=(any)

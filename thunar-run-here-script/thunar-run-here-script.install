@@ -5,7 +5,7 @@ for i in $(ls /home); do
 if [ -f "/home/$i/.config/Thunar/uca.xml" ]; then
 sed -i -e 's|</actions>||g' "/home/$i/.config/Thunar/uca.xml"
 echo '<action>
-	<icon>application-x-executable</icon>
+	<icon>xfrun4</icon>
 	<name>Run Here</name>
 	<command>/usr/bin/thunar-run-here-script %f</command>
 	<description>Open run dialog with per directory history</description>

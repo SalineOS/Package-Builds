@@ -2,7 +2,7 @@
 # Maintainer: Anthony Nordquist <salinelinux@gmail.com>
 pkgname=thunar-image-to-usb-script
 pkgver=(4.11)
-pkgrel=1
+pkgrel=2
 epoch=
 pkgdesc="Allows writing contents of an iso or image file to a USB key from the Thunar file manager"
 arch=(any)
